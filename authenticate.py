@@ -1,4 +1,5 @@
 from stravaio import strava_oauth2
+import os
 
 
 def authenticate(strava_client_id, strava_client_secret):
@@ -12,12 +13,13 @@ def authenticate(strava_client_id, strava_client_secret):
         client_secret=strava_client_secret
     )
     access_token = response['access_token']
+
     return access_token
 
 
 if __name__ == '__main__':
-    strava_client_id = '49662'
-    strava_client_secret = '5c7f82b7b67b632f7ab558ec290081915fa56962'
+    strava_client_id = os.environ['STRAVA_CLIENT_ID']
+    strava_client_secret = os.environ['STRAVA_CLIENT_SECRET']
     access_token = authenticate(
         strava_client_id,
         strava_client_secret
