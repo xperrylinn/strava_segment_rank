@@ -3,7 +3,6 @@ from util.strava_selenium.strava_selenium_helpers import strava_login
 from util.strava_selenium.strava_selenium_helpers import strava_scrape_segment_leaderboard
 from selenium import webdriver
 import time
-import datetime
 
 driver = webdriver.Chrome('../../chromedriver')
 strava_login_url = 'https://www.strava.com/login'
@@ -42,7 +41,7 @@ def test_strava_scrape_segment_leaderboard():
 
 def test_scrape_data():
     test_strava_login()
-    time.sleep(2) # Need to give time for javascript to load (or something like that)
+    time.sleep(2)   # Need to give time for javascript to load (or something like that)
     print(test_strava_scrape_segment_leaderboard())
 
 
