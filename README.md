@@ -24,9 +24,9 @@ Environment Variables:
 - STRAVA_PASSWORD - password for Strava account 
 - CHROMEDRIVER_PATH - path to ChromeDriver
 
-Usage:
+Usage in strava_segment_rank.py:
 
-`strava_segment_rank('10/8/2020', '10/10/2020', 10)` in strava_segment_rank.py --> dataframe
+`strava_segment_rank('10/8/2020', '10/10/2020', 10)` --> dataframe
 
 `print(dataframe.to_string())` 
 
