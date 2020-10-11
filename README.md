@@ -26,7 +26,9 @@ Environment Variables:
 
 Usage:
 
-`strava_segment_rank(start_date, end_date, top_k)` in strava_segment_rank.py
+`strava_segment_rank('10/8/2020', '10/10/2020', 10)` in strava_segment_rank.py --> dataframe
+
+`print(dataframe.to_string())` 
 
 -->
 
