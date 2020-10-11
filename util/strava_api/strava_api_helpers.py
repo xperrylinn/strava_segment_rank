@@ -42,8 +42,11 @@ def compute_athlete_segment_frequency(client, date_after):
 
     detailed_activities = []
     for activity_id in list_activities_by_id:
-        time.sleep(api_call_limit_rate / 60.0 + 1.0)
+        # time.sleep(api_call_limit_rate / 60.0 + 1.0)
+        time.sleep(1.0)
+        print('Getting activity_id ', str(activity_id), 'detailed activity.')
         detailed_activity = client.get_activity_by_id(activity_id)
+        detailed_activities.append(detailed_activity)
 
     segment_frequencies = defaultdict(int)
     for detailed_activity in detailed_activities:

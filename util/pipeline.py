@@ -1,5 +1,6 @@
 from util.strava_api.strava_api_helpers import compute_athlete_segment_frequency
 from util.strava_selenium.strava_selenium_helpers import strava_scrape_segment_leaderboard
+from util.strava_selenium.strava_selenium_helpers import strava_login
 from util.strava_api.authenticate import authenticate
 from stravaio import StravaIO
 from selenium import webdriver
@@ -8,11 +9,19 @@ import pandas
 
 
 strava_login_url = 'https://www.strava.com/login'
-strava_segment_leaderboard_url = lambda x: 'https://www.strava.com/segments/' + x + '?filter=overall'
+strava_segment_leaderboard_url = lambda x: ('https://www.strava.com/segments/' + str(x) + '?filter=overall')
 strava_login_button_xml = '//*[@type="submit"]'
 strava_leaderboard_data_div_xml = '//div[@data-tracking]'
 
-driver = webdriver.Chrome('../../chromedriver')
+driver = webdriver.Chrome('../chromedriver')
+
+strava_login(
+    driver,
+    strava_login_url,
+    os.environ['STRAVA_USERNAME'],
+    os.environ['STRAVA_PASSWORD']
+)
+
 client = StravaIO(
     access_token=authenticate(
         os.environ['STRAVA_CLIENT_ID'],
@@ -20,16 +29,18 @@ client = StravaIO(
     )
 )
 
-segment_frequencies = compute_athlete_segment_frequency(client, 0)
-segment_frequencies = {
+segment_frequencies = compute_athlete_segment_frequency(client, 1600211729)
+
+segment_frequencies_df = pandas.DataFrame(
+    {
     'segment_id': segment_frequencies.keys(),
     'frequency': segment_frequencies.values()
-}
-
-segment_frequencies_df = pandas.DataFrame(segment_frequencies)
+    }
+)
 
 segment_leadboard_datas = []
 for segment_id, frequency in segment_frequencies.items():
+    print('Scrapping segment ', str(segment_id))
     segment_leaderboard_data = strava_scrape_segment_leaderboard(
         driver,
         segment_id,

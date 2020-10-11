@@ -1,9 +1,10 @@
 import datetime
 import json
+import time
 
 # Constants and Params
 strava_login_url = 'https://www.strava.com/login'
-strava_segment_leaderboard_url = lambda x: 'https://www.strava.com/segments/' + x + '?filter=overall'
+strava_segment_leaderboard_url = lambda x: ('https://www.strava.com/segments/' + x + '?filter=overall')
 strava_login_button_xml = '//*[@type="submit"]'
 strava_leaderboard_data_div_xml = '//div[@data-tracking]'
 
@@ -45,6 +46,8 @@ def strava_scrape_segment_leaderboard(driver, segment_id, segment_leaderboard_ur
     """
 
     driver.get(segment_leaderboard_url(segment_id))
+
+    time.sleep(5)
 
     element = driver.find_element_by_xpath(strava_leaderboard_data_div_xml)
 

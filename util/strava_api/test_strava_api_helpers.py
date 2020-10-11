@@ -13,7 +13,7 @@ client = StravaIO(
 
 
 def test_compute_athlete_segment_frequency():
-    print(compute_athlete_segment_frequency(client, 0))
+    print(compute_athlete_segment_frequency(client, 1600211729))
     return
 
 
