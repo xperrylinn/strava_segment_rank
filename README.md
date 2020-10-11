@@ -48,3 +48,9 @@ outputs:
 | 1506641    | 1         | 1551          | 465         | 2020-10-11 14:20:44.637802 |
 | 7475165    | 1         | 3174          | 414         | 2020-10-11 14:20:50.770559 |
 
+where:
+ - segmnet_id - strava segment uid
+ - fequency - total number of attempts by athlete
+ - total_entries - total number of attemps by all athletes
+ - view_rank - athlere leaderboard rank
+ - read_date - datetime at which the data was read
