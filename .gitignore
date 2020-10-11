@@ -3,3 +3,6 @@
 *__pycahce__
 *.pyc
 *venv*
+chromedriver
+*.log
+
