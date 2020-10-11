@@ -85,4 +85,5 @@ def strava_segment_rank(start_date, end_date, top_k):
 
 if __name__ == '__main__':
     print('Hello World!')
-    strava_segment_rank('10/5/2020', '10/10/2020', 10)
+    df = strava_segment_rank('10/8/2020', '10/10/2020', 10)
+    print(df.to_string())
