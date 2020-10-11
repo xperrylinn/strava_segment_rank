@@ -26,7 +26,9 @@ Environment Variables:
 
 Usage:
 
-`strava_segment_rank(start_date, end_date, top_k)` in strava_segment_rank.py -->
+`strava_segment_rank(start_date, end_date, top_k)` in strava_segment_rank.py
+
+-->
 
 | segment_id | frequency | total_entries | viewer_rank | read_date                      |
 |------------|-----------|---------------|-------------|--------------------------------|
