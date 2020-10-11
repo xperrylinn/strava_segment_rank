@@ -1,9 +1,9 @@
-from stravaio import StravaIO
 from stravaio import strava_oauth2
-import datetime
 import time
 from collections import defaultdict
-import swagger_client
+from config import (
+    api_call_limit_rate
+)
 
 
 def authenticate(strava_client_id, strava_client_secret):
@@ -21,7 +21,7 @@ def authenticate(strava_client_id, strava_client_secret):
     return access_token
 
 
-def compute_athlete_segment_frequency(client, date_after):
+def compute_athlete_segment_frequency(client, start_date, end_date):
     """
 
     Get's all user activites after an epoch time stamp and computes the
@@ -29,21 +29,23 @@ def compute_athlete_segment_frequency(client, date_after):
     a dict
 
     :param client: stravaio client
-    :param date_after: epoch timestamp. gets activites after date_after
+    :param start_date: epoch timestamp. gets activites after start_date
+    :type start_date: int
+    :param end_date: epoch timestamp. gets activites on and before end_date
+    :type end_date: int
     :return: dict,
         keys:
             segment_id --> int
     """
 
-    list_activities = client.get_logged_in_athlete_activities(after=date_after)
+    list_activities = client.get_logged_in_athlete_activities(after=start_date)
     list_activities_by_id = [summary_activity.id for summary_activity in list_activities]
 
-    api_call_limit_rate = 100.0 / 15    # calls per min
+    wait_time = api_call_limit_rate / 60.0 * (1 + 0.5)  # add a 50% time buffer
 
     detailed_activities = []
     for activity_id in list_activities_by_id:
-        # time.sleep(api_call_limit_rate / 60.0 + 1.0)
-        time.sleep(1.0)
+        time.sleep(wait_time)
         print('Getting activity_id ', str(activity_id), 'detailed activity.')
         detailed_activity = client.get_activity_by_id(activity_id)
         detailed_activities.append(detailed_activity)

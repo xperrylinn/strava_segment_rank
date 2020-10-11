@@ -1,12 +1,10 @@
+from config import (
+    strava_leaderboard_data_div_xml,
+    strava_login_button_xml
+)
 import datetime
 import json
 import time
-
-# Constants and Params
-strava_login_url = 'https://www.strava.com/login'
-strava_segment_leaderboard_url = lambda x: ('https://www.strava.com/segments/' + x + '?filter=overall')
-strava_login_button_xml = '//*[@type="submit"]'
-strava_leaderboard_data_div_xml = '//div[@data-tracking]'
 
 
 def strava_login(driver, login_url, username, password):
