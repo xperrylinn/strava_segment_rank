@@ -1,5 +1,5 @@
-from util.strava_api.strava_api_helpers import authenticate
-from util.strava_api.strava_api_helpers import compute_athlete_segment_frequency
+from strava_segment_rank.util.strava_api import authenticate
+from strava_segment_rank.util.strava_api import compute_athlete_segment_frequency
 import os
 from stravaio import StravaIO
 

@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 
 setup(
-    name='strava segment rank',
+    name='strava_segment_rank',
     version='1.0',
     description='Strava segment leaderboard scraper',
     author='Xavier Linn',

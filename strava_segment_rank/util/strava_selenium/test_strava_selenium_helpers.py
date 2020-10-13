@@ -1,10 +1,10 @@
 import os
-from util.strava_selenium.strava_selenium_helpers import strava_login
-from util.strava_selenium.strava_selenium_helpers import strava_scrape_segment_leaderboard
+from strava_segment_rank.util.strava_selenium.strava_selenium_helpers import strava_login
+from strava_segment_rank.util.strava_selenium.strava_selenium_helpers import strava_scrape_segment_leaderboard
 from selenium import webdriver
 import time
 
-driver = webdriver.Chrome('../../chromedriver')
+driver = webdriver.Chrome('../../../chromedriver')
 strava_login_url = 'https://www.strava.com/login'
 strava_segment_leaderboard_url = lambda x: 'https://www.strava.com/segments/' + x + '?filter=overall'
 strava_login_button_xml = '//*[@type="submit"]'

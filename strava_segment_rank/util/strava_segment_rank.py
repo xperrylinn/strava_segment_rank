@@ -1,7 +1,7 @@
-from util.strava_api.strava_api_helpers import compute_athlete_segment_frequency
-from util.strava_selenium.strava_selenium_helpers import strava_scrape_segment_leaderboard
-from util.strava_selenium.strava_selenium_helpers import strava_login
-from util.strava_api.authenticate import authenticate
+from strava_segment_rank.util.strava_api import compute_athlete_segment_frequency
+from strava_segment_rank.util.strava_selenium.strava_selenium_helpers import strava_scrape_segment_leaderboard
+from strava_segment_rank.util.strava_selenium.strava_selenium_helpers import strava_login
+from strava_segment_rank.util.strava_api import authenticate
 from config import (
     strava_login_url,
     strava_segment_leaderboard_url,
