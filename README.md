@@ -26,6 +26,7 @@ Environment Variables:
 
 Usage in strava_segment_rank.py:
 
+`from strava_segment_rank.util import strava_segment_rank`
 `strava_segment_rank('10/8/2020', '10/10/2020', 10)` --> dataframe
 
 `print(dataframe.to_string())` 
